@@ -1,0 +1,10 @@
+services:
+  geo-lookup:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data:ro
+    environment:
+      - GEOIP_DB_PATH=/data/GeoLite2-City.mmdb
+    restart: unless-stopped
