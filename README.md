@@ -95,7 +95,3 @@ looked up and the requester's IP) to stdout/your container logs, per normal HTTP
 behavior. If you're running this publicly, consider your own log retention policy and
 disclose it if you're offering the service to others — the same transparency principle
 the extension itself follows.
-
-## License
-
-MIT — see [LICENSE](./LICENSE).
