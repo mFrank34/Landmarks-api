@@ -1,10 +1,22 @@
+version: "3.9"
+
+networks:
+  frankslab-uk:
+    external: true
+
 services:
-  geo-lookup:
-    build: .
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./data:/data:ro
-    environment:
-      - GEOIP_DB_PATH=/data/GeoLite2-City.mmdb
+  geo-server:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: geo-server
     restart: unless-stopped
+    environment:
+      - MAXMIND_LICENSE_KEY=${MAXMIND_LICENSE_KEY}
+    volumes:
+      - geo-server-data:/data
+    networks:
+      - frankslab-uk
+
+volumes:
+  geo-server-data:
